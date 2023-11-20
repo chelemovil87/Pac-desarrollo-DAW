@@ -1,0 +1,36 @@
+html{
+    background: url(/sources/img/fondo.jpeg);
+    z-index: 999;
+}
+.title{
+    text-align: center;
+    align-items: center;
+}
+.label{
+    color: wheat;
+}
+
+#invernadero {
+    position: relative;
+    height: 50%;
+    width: 60%;
+    border: 1px solid black;
+    display: flex; 
+    justify-content: space-between; 
+}
+.planta {
+    position: absolute;
+    bottom: 0;
+    width: 100px;
+    transition: all 1s;
+}
+
+.oculto {
+    display: none;
+}
+.cubo{
+    width: 30px;
+    height: 30px;
+    background-color: red;
+    bottom: 20px;
+}

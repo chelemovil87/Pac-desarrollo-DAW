@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body>
+    <audio src="/sources/sound/piano.mp3" controls  loop></audio>
+    <img class="title" src="/sources/img/ilerna.png" alt="title">
+    <label class="label">Seleccione el numero de plantas</label>
+    <select id="numPlantas">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+    </select>
+       <div> 
+        <div class="cubo"></div>
+        <img src="/sources/img/setas.png" class="planta" id="planta1">
+        <img src="/sources/img/planta2.png " class="planta" id="planta2">
+        <img src="/sources/img/planta3.png" class="planta" id="planta3">
+        <img src="/sources/img/planta4.png" class="planta" id="planta4">
+        <img src="/sources/img/planta5.png" class="planta" id="planta5">
+        <img src="/sources/img/planta6.png" class="planta" id="planta6">
+    </div> 
+    <button id="iniciar">Iniciar</button>
+    <button id="replantar" class="oculto">Replantar</button>
+    <script src="script.js"></script> 
+</body>
+</html>
