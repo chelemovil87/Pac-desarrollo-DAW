@@ -5,63 +5,63 @@ document.getElementById("iniciar").addEventListener("click", iniciarCrecimiento)
 document.getElementById("replantar").addEventListener("click", replantar);
 
 function iniciarCrecimiento() {
-  document.getElementById("iniciar").classList.add("oculto");
-  document.getElementById("replantar").classList.remove("oculto");
+    document.getElementById("iniciar").classList.add("oculto");
+    document.getElementById("replantar").classList.remove("oculto");
 
-  let plantasSeleccionadas = plantas.slice(0, numPlantas);
+    numPlantas = document.getElementById("numPlantas").value;
+    let plantasSeleccionadas = plantas.slice(0, numPlantas);
 
-  // Código para iniciar el crecimiento de las plantas
-  plantasSeleccionadas.forEach(planta => {
-      let crecimiento = setInterval(() => {
-          planta.tamaño += Math.floor(Math.random() * 10) + 1;
-          document.getElementById(planta.id).style.bottom = planta.tamaño + "px";
+    let alturaInvernadero = document.getElementById('invernadero').offsetHeight;
 
-          // Deformar la planta de manera aleatoria
-          let factorEscala = Math.random() * 2 + 0.5; // Genera un número aleatorio entre 0.5 y 2.5
-          document.getElementById(planta.id).style.transform = `scaleY(${factorEscala})`;
+    plantasSeleccionadas.forEach(planta => {
+        let crecimiento = setInterval(() => {
+            if (planta.tamaño < alturaInvernadero) {
+                planta.tamaño += Math.floor(Math.random() * 1) + 1; /* Reducir la cantidad de crecimiento */
+                document.getElementById(planta.id).style.height = planta.tamaño + "%"; /* Cambiar a porcentaje para ajustar al tamaño de las plantas */
+            }
+            document.getElementById(planta.id).style.transform = `scaleY(1)`;
+            actualizarTarjetas();
+        }, 1000);
 
-          // Verificar si la planta ha llegado al techo
-          if (planta.tamaño >= 350) { // 350 es el tope del invernadero
-              clearInterval(crecimiento);
-              console.log("La planta " + planta.id + " ha llegado al techo!");
-          }
-      }, 1000);
-  });
+        setTimeout(() => {
+            clearInterval(crecimiento);
+        }, 3000);
+    });
+}
+}
+}
+}
+}
+
+function actualizarTarjetas() {
+    let cardContainer = document.getElementById('cardContainer');
+    cardContainer.innerHTML = '';
+
+    let plantasSeleccionadas = plantas.slice(0, numPlantas);
+
+    plantasSeleccionadas.sort((a, b) => b.tamaño - a.tamaño).forEach(planta => {
+        let card = document.createElement('div');
+        card.className = 'card';
+        card.innerHTML = `<img src="/sources/img/${planta.id}.png" alt="${planta.id}"><p>${planta.tamaño}</p>`;
+        cardContainer.appendChild(card);
+    });
 }
 
 function replantar() {
-  document.getElementById("replantar").classList.add("oculto");
-  document.getElementById("iniciar").classList.remove("oculto");
+    document.getElementById("replantar").classList.add("oculto");
+    document.getElementById("iniciar").classList.remove("oculto");
 
-  // Código para replantar las flores
-  plantas.forEach(planta => {
-      planta.tamaño = 0;
-      document.getElementById(planta.id).style.bottom = planta.tamaño + "px";
-      document.getElementById(planta.id).style.transform = `scaleY(1)`; // Restablecer la escala a 1
-  });
+    // Eliminar tarjetas de plantas
+    var cardContainer = document.getElementById('cardContainer');
+    cardContainer.innerHTML = '';
+
+    // Código para replantar las flores
+    plantas.forEach(planta => {
+        planta.tamaño = 0;
+        document.getElementById(planta.id).style.bottom = planta.tamaño + "px";
+        document.getElementById(planta.id).style.transform = `scaleY(1)`; // Restablecer la escala a 1
+    });
 }
-
-let invernadero = document.getElementById('invernadero');
-let alturaInvernadero = invernadero.offsetHeight; // Obtiene la altura del div contenedor
-
-function iniciar() {
- // Crecimiento de las plantas
- let tiempoInicio = Date.now();
- for (let i = 0; i < numPlantas; i++) {
-   let crecimiento = Math.floor(Math.random() * 10) + 1; // Valor de crecimiento aleatorio entre 1 y 10
-   crecimientoPlantas[i] += crecimiento;
-   // Si el crecimiento de la planta ha alcanzado la altura del div contenedor, detén el crecimiento
-   if (crecimientoPlantas[i] >= alturaInvernadero) {
-     crecimientoPlantas[i] = alturaInvernadero;
-   }
-   document.getElementById(`planta-${i}`).style.height = `${crecimientoPlantas[i]}px`;
-   if (crecimientoPlantas[i] >= techo) {
-     // Si una planta alcanza el techo, se considera la planta preferida
-     let tiempoAlTecho = Date.now() - tiempoInicio;
-     plantasAlTecho.push({numero: i + 1, tiempo: tiempoAlTecho});
-     if (plantasAlTecho.length == numPlantas) {
-       // Si todas las plantas han alcanzado el techo, ordenamos las plantas y mostramos la tabla
-       plantasAlTecho.sort((a, b) => a.tiempo - b.tiempo);
        mostrarTabla();
      }
      replantar();
@@ -72,3 +72,21 @@ function iniciar() {
  document.getElementById('replantar').style.display = 'block';
 }
 
+// Sonido de crecimiento al pulsar el boton de
+let sound = new Audio();
+sound.src = "/sources/sound/sonido.mp3";
+
+document.getElementById('numPlantas').addEventListener('change', function() {
+  var numPlantas = this.value;
+  var cardContainer = document.getElementById('cardContainer');
+  cardContainer.innerHTML = ''; // Limpiar el contenedor de tarjetas
+
+  for (var i = 1; i <= numPlantas; i++) {
+      var card = document.createElement('div');
+      card.className = 'card';
+      var img = document.createElement('img');
+      img.src = "/sources/img/planta" + i + ".png";
+      card.appendChild(img);
+      cardContainer.appendChild(card);
+  }
+});
