@@ -17,7 +17,7 @@ function iniciarCrecimiento() {
         let alturaInicial = document.getElementById(planta.id).offsetHeight; // Obtener la altura inicial de la planta
         let crecimiento = setInterval(() => {
             if (planta.tamaño < alturaInvernadero) {
-                planta.tamaño += Math.floor(Math.random() * 10) + 1;
+                planta.tamaño += Math.floor(Math.random() * 20) + 1;
                 let alturaPlanta = alturaInicial + (planta.tamaño / 100) * alturaInvernadero; // Agregar al tamaño inicial de la planta
                 document.getElementById(planta.id).style.height = `${alturaPlanta}px`;
             }
@@ -26,7 +26,7 @@ function iniciarCrecimiento() {
 
         setTimeout(() => {
             clearInterval(crecimiento);
-        }, 6000);
+        }, 4000);
     });
 }
 
