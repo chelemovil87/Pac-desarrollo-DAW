@@ -1,4 +1,4 @@
-let numPlantas = document.getElementById("numPlantas").value; // Obtiene el valor del elemento HTML con el id "numPlantas"
+let numPlantas = document.getElementById("numPlantas").value; /* Obtiene el valor del elemento HTML con el id "numPlantas"*/
 let plantas = Array.from({ length: 6 }, (_, i) => ({
   // Crea un array de objetos, cada uno representando una planta
   id: "planta" + (i + 1), // El id de la planta es una cadena que concatena "planta" con el índice de la planta en el array (más uno)
@@ -7,7 +7,7 @@ let plantas = Array.from({ length: 6 }, (_, i) => ({
 
 document
   .getElementById("iniciar")
-  .addEventListener("click", iniciarCrecimiento); // Agrega un oyente de eventos al elemento con el id "iniciar"
+  .addEventListener("click", iniciarCrecimiento); ///Agrega un oyente de eventos al elemento con el id "iniciar"
 document.getElementById("replantar").addEventListener("click", replantar); // Agrega un oyente de eventos al elemento con el id "replantar"
 
 function iniciarCrecimiento() {
@@ -53,10 +53,10 @@ function actualizarTarjetas() {
       // Para cada planta seleccionada, ordenadas por tamaño
       let card = document.createElement("div"); // Crea una nueva tarjeta
       card.className = "card"; // Asigna la clase "card" a la tarjeta
-      card.innerHTML = `<img src="/sources/img/${planta.id}.png" alt="${planta.id}"> // Agrega una imagen a la tarjeta
+      card.innerHTML = `<img src="/sources/img/${planta.id}.png" alt="${planta.id}"> 
                       <div>
-                        <p>${planta.tamaño}</p> // Agrega el tamaño de la planta a la tarjeta
-                        <p>cm</p> // Indica que el tamaño está en centímetros
+                        <p>${planta.tamaño}</p> 
+                        <p>cm</p> 
                       </div>`;
       cardContainer.appendChild(card); // Agrega la tarjeta al contenedor
     });
