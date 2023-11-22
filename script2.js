@@ -14,11 +14,11 @@ function iniciarCrecimiento() {
     let alturaInvernadero = document.getElementById('invernadero').offsetHeight;
 
     plantasSeleccionadas.forEach(planta => {
-        let alturaInicial = document.getElementById(planta.id).offsetHeight; // Obtener la altura inicial de la planta
+        let alturaInicial = document.getElementById(planta.id).offsetHeight; 
         let crecimiento = setInterval(() => {
-            if (planta.tamaño < alturaInvernadero) {
+            let alturaPlanta = alturaInicial + (planta.tamaño / 100) * alturaInvernadero; 
+            if (alturaPlanta < alturaInvernadero) {
                 planta.tamaño += Math.floor(Math.random() * 20) + 1;
-                let alturaPlanta = alturaInicial + (planta.tamaño / 100) * alturaInvernadero; // Agregar al tamaño inicial de la planta
                 document.getElementById(planta.id).style.height = `${alturaPlanta}px`;
             }
             actualizarTarjetas();
@@ -26,7 +26,7 @@ function iniciarCrecimiento() {
 
         setTimeout(() => {
             clearInterval(crecimiento);
-        }, 4000);
+        }, 6000);
     });
 }
 
@@ -39,25 +39,30 @@ function actualizarTarjetas() {
     plantasSeleccionadas.sort((a, b) => b.tamaño - a.tamaño).forEach(planta => {
         let card = document.createElement('div');
         card.className = 'card';
-        card.innerHTML = `<img src="/sources/img/${planta.id}.png" alt="${planta.id}"><p>${planta.tamaño}</p>`;
+        card.innerHTML = `<img src="/sources/img/${planta.id}.png" alt="${planta.id}">
+                          <div>
+                            <p>${planta.tamaño}</p>
+                            <p>cm</p>
+                          </div>`;
         cardContainer.appendChild(card);
+    });
+
+    cardContainer.style.visibility = 'visible';
+}
+function replantar() {
+document.getElementById("replantar").classList.add("oculto");
+document.getElementById("iniciar").classList.remove("oculto");
+
+// Eliminar tarjetas de plantas
+var cardContainer = document.getElementById('cardContainer');
+    cardContainer.style.visibility = 'hidden';
+    cardContainer.innerHTML = '';
+
+plantas.forEach(planta => {
+    planta.tamaño = 0;
+       document.getElementById(planta.id).style.height = "auto"; 
     });
 }
 
-function replantar() {
-   document.getElementById("replantar").classList.add("oculto");
-   document.getElementById("iniciar").classList.remove("oculto");
-
-   // Eliminar tarjetas de plantas
-   var cardContainer = document.getElementById('cardContainer');
-   cardContainer.innerHTML = '';
-
-   // Código para replantar las flores
-   plantas.forEach(planta => {
-       planta.tamaño = 0;
-       document.getElementById(planta.id).style.height = "auto"; // Restablecer la altura de la planta
-   });
-}
-// Sonido de crecimiento al pulsar el boton de iniciar
-let sound = new Audio();
+var sound = new Audio();
 sound.src = "/sources/sound/sonido.mp3";

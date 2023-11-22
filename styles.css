@@ -1,25 +1,49 @@
+@import url('https://fonts.googleapis.com/css2?family=Creepster&display=swap');
+
 html{
     background: url(/sources/img/fondo.jpeg);
     z-index: 999;
 
 }
-.sidebar{
-    display: flex;
-}
 .title{
     display: block;
     margin-left: auto;
     margin-right: auto;
+    margin-bottom: 1rem;
     width: 50%;
+    height: auto;
+    
 }
-.contenedor{
+.sidebar{
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
+    width: 15vw;
 }
 .label{
+    margin: auto;
+    margin-bottom: -20px;
+    text-align: center;
     color: rgb(240, 10, 10);
-    font-family: ;
+    font-family: Creepster;
+    font-size: 37px;
+    height: 10%;
+    position: relative;
 }
+#numPlantas{
+    background-color: red;
+    width: 2.5rem;
+    color:#ffffff;
+    position: relative;
+    font-size: 1.5rem;
+    margin: auto;
+}
+
+.contenedor{
+    position: relative;
+    display: flex;
+    justify-content: space-around;
+}
+
 
 #invernadero {
     background: rgba( 66, 65, 65, 0.45 );
@@ -27,13 +51,13 @@ html{
     backdrop-filter: blur( 5px );
     -webkit-backdrop-filter: blur( 5px );
     border-radius: 10px;
-    border: 2px solid rgba( 255, 255, 255, 0.18 );
-    position: relative;
-    height: 70vh;
-    width: 60vw;
-    margin: 20px;
+    border: 2px solid rgba(255, 255, 255, 0.445);
+    position: a;
+    height: 72vh;
+    width: 65vw;
+    overflow: hidden;
     display: flex; 
-    justify-content: space-around; 
+    justify-content: space-between; 
     align-items: flex-end; 
 }
 
@@ -42,15 +66,16 @@ html{
     align-content: flex-end;
     justify-content: space-around;
     bottom: 0;
-    width: 150px;
-    height: 150px;
-    transition: all 2s;
-    margin-right: 20px; 
+    width: 10rem;
+    height: 10rem;
+    transition: all 3s;
+    margin: 20px;
 }
-  
+
 .oculto {
     display: none;
 }
+
 .card {
     background: rgba( 66, 65, 65, 0.45 );
     box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
@@ -67,28 +92,30 @@ html{
     margin-right: 20px;
 }
 .card img {
-    width:80px;
-    height: 80px;
+    margin: auto;
+    width:90px;
+    height: 70px;
 }
 button {
+    margin: auto;
     padding: 10px 20px;
     text-transform: uppercase;
     border-radius: 8px;
-    font-size: 17px;
+    font-size: 27px;
     font-weight: 500;
     color: #ffffff80;
     text-shadow: none;
     background: transparent;
     box-shadow: transparent;
     border: 1px solid #ffffff80;
-    transition: 0.5s ease;
+    transition: 1.5s ease;
     user-select: none;
-  }
-  
-  #iniciar:hover,:focus {
+}
+
+#replantar:hover{
     color: #ffffff;
     background: #1eff00;
-    border: 1px solid #48ff00;
+    border: 1px solid #1eff00;
     text-shadow: 0 0 5px #ffffff,
                 0 0 10px #ffffff,
                 0 0 20px #ffffff;
@@ -96,4 +123,17 @@ button {
                 0 0 20px #33ff00,
                 0 0 50px #5eff00,
                 0 0 100px #00ffff;
-  }
+}
+
+#iniciar:hover{
+    color: #ffffff;
+    background: #ff1e00;
+    border: 1px solid #ff6600;
+    text-shadow: 0 0 5px #ffffff,
+                0 0 10px #ffffff,
+                0 0 20px #ffffff;
+    box-shadow: 0 0 5px #ff3300,
+                0 0 20px #ffa600,
+                0 0 50px #ffee00,
+                0 0 100px #eeff00;
+} 

@@ -3,23 +3,22 @@
 <head>
     <link rel="stylesheet" type="text/css" href="styles.css">
 </head>
-<>
-<img class="title" src="/sources/img/ilerna.png" alt="title">
-
-<div class="contenedor">
-    <div class="sidebar">
-        <label class="label">Seleccione el numero de plantas</label>
-        <select id="numPlantas">
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-            <option value="6">6</option>
-        </select>
-        <audio src="/sources/sound/piano.mp3" autoplay loop></audio>
-        <button id="iniciar" class="audio" onclick="sound.play()">Iniciar</button>
-        <button id="replantar" class="oculto">Replantar</button>
+<body>
+    <audio src="/sources/sound/piano.mp3" autoplay loop></audio>
+    <img class="title" src="/sources/img/ilerna.png" alt="title">
+    <div class="contenedor">
+        <div class="sidebar">
+            <label class="label">Seleccione las plantas</label>
+            <select id="numPlantas">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</optio>
+                <option value="5">5</option>
+                <option value="6">6</option>
+            </select>
+            <button id="iniciar" class="audio" onclick="sound.play()">Iniciar</button>
+            <button id="replantar" class="oculto">Replantar</button>
         </div>
         <div id="invernadero"> 
             <img src="/sources/img/planta1.png" class="planta" id="planta1">
@@ -29,11 +28,8 @@
             <img src="/sources/img/planta5.png" class="planta" id="planta5">
             <img src="/sources/img/planta6.png" class="planta" id="planta6">
         </div> 
-        <div class="lista">
-
-        </div>
         <div id="cardContainer"></div>
-</div> 
+    </div> 
     <script src="script2.js"></script>
 </body>
 </html>
