@@ -80,5 +80,5 @@ function replantar() {
   });
 }
 
-var sound = new Audio(); // Crea un nuevo objeto Audio
-sound.src = "/sources/sound/sonido.mp3"; // Asigna la fuente del sonido al archivo "sonido.mp3"
+// var sound = new Audio(); // Crea un nuevo objeto Audio
+// sound.src = "/sources/sound/sonido.mp3"; // Asigna la fuente del sonido al archivo "sonido.mp3"
